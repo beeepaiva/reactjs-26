@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 // Se o export for no começo
@@ -18,10 +19,19 @@ function App() {
     {id:4, nome: "Outros conceitos em React", desc: "Outros conceitos em React", semana: 4},
     {id:5, nome: "ADO Sobre React", desc: "Prova", semana: 5}
   ];
+  
+  var valorInicialCont = 0
+  const [varCont, setVarCont] = useState(valorInicialCont)
+  const [varNome, setVarNome] = useState("aaa")
 
   return (
     <div className="App">
       <Header />
+      <button onClick={() => setVarCont(varCont+1)}> Aumentar contador</button>
+      <h4>{varCont}</h4>  
+      <input
+        value={varNome} onChange={(e) => setVarNome(e.target.value)}/>
+      <h4>{varNome}</h4>  
         {
           /*
       <ul>
