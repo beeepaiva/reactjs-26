@@ -9,6 +9,7 @@ import Button from './componentes/Button.js'
 
 import {Form} from './componentes/Form.js'
 import {ListAulas} from './componentes/ListAulas.js'
+import { Bola } from './componentes/Bola8.js';
 function App() {
 
   const arraySimples = [1, 2, 3, 4]
@@ -22,11 +23,14 @@ function App() {
   
   var valorInicialCont = 0
   const [varCont, setVarCont] = useState(valorInicialCont)
-  const [varNome, setVarNome] = useState("aaa")
+  const [varNome, setVarNome] = useState("")
 
   return (
     <div className="App">
       <Header />
+      <br/>
+      <Bola />
+      
       <button onClick={() => setVarCont(varCont+1)}> Aumentar contador</button>
       <h4>{varCont}</h4>  
       <input
