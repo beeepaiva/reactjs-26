@@ -10,6 +10,7 @@ import Button from './componentes/Button.js'
 import {Form} from './componentes/Form.js'
 import {ListAulas} from './componentes/ListAulas.js'
 import { Bola } from './componentes/Bola8.js';
+import { Alunos } from './componentes/Alunos.js';
 function App() {
 
   const arraySimples = [1, 2, 3, 4]
@@ -25,9 +26,30 @@ function App() {
   const [varCont, setVarCont] = useState(valorInicialCont)
   const [varNome, setVarNome] = useState("")
 
+  const [inputText, setInputText] = useState("")
+
+  const [search, setSearch] = useState("");
+
+  const listAlunos = [
+    "Isaias",
+    "Larissa",
+    "Tati",
+    "João",
+    "Paula",
+    "Lucas"
+  ];
+
+  const getValue = (valor) =>{
+    setSearch(valor)
+  }
+
   return (
     <div className="App">
-      <Header />
+      <Header value={getValue} searched={search}/>
+      <Alunos alunos={listAlunos} search={search} />
+
+      {
+      /*
       <br/>
       <Bola />
       
@@ -36,18 +58,15 @@ function App() {
       <input
         value={varNome} onChange={(e) => setVarNome(e.target.value)}/>
       <h4>{varNome}</h4>  
-        {
-          /*
+        
       <ul>
         {arraySimples.map(
           (numero) => {return <li>{numero}</li>} 
         ) }
       </ul>
-      */
-      }
+      
       <ListAulas/>
-      {
-        /*
+      
         <Button textDisplay="Botao 1" habilitar={true} />
         <Button textDisplay="Botao 2" habilitar={false} />
         <Button textDisplay="Botao 3"/>

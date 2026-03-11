@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import '../App.css'
 
 import logo from '../assets/senac-logo.png'
@@ -13,21 +14,40 @@ function BotaoAlerta({textDisplay, curso}){
     )
 }
 
-export function Header(){
+export function Header({value, ...props}){
     //const curso = "TSI"
     const curso = {
         nome:"BCC", 
         detalhes: "Bacharelado em Ciência da Computação"
     }
 
+    const handleInputChange = (e) => {
+        //setInputText(e.target.value)
+        value(e.target.value)
+    }
 
     return (
         <div>
             <img src={logo} />
             <h1> Oi {curso.nome}...</h1> 
             <h2>Boa noite alunos de {curso.detalhes}</h2>
-            <button onClick={()=> alert(curso.nome + " " + curso.detalhes)}>Botao!</button>
-            <BotaoAlerta textDisplay="Botao de alerta de curso" curso={curso} />
+            {/**<input onChange={handleInputChange} />**/}
+
+            <br/>
+            <br/>
+            <input
+                type="text"
+                value={props.search}
+                onChange={handleInputChange}
+            />
+            
+            {/** 
+             *
+             
+             <button onClick={()=> alert(curso.nome + " " + curso.detalhes)}>Botao!</button>
+             <BotaoAlerta textDisplay="Botao de alerta de curso" curso={curso} />
+             */
+            }
         </div>
     )
 }
