@@ -14,7 +14,7 @@ function BotaoAlerta({textDisplay, curso}){
     )
 }
 
-export function Header({value, ...props}){
+export function Header({tema, action, value, ...props}){
     //const curso = "TSI"
     const curso = {
         nome:"BCC", 
@@ -29,9 +29,16 @@ export function Header({value, ...props}){
     return (
         <div>
             <img src={logo} />
-            <h1> Oi {curso.nome}...</h1> 
+            <header className={props.class}>
+            <h3 style={{marginLeft:'50px'}}>SENAC - MOBILE</h3>
+            <button onClick={()=>action()} style={{marginLeft:'50px', marginRight:'-400px'}}>Limpar Exercício</button>
+            <button onClick={()=>tema()} style={{ marginRight:'50px'}}>Trocar tema</button>
+            </header>
+            
+            {/**
+             * <h1> Oi {curso.nome}...</h1> 
             <h2>Boa noite alunos de {curso.detalhes}</h2>
-            {/**<input onChange={handleInputChange} />**/}
+            
 
             <br/>
             <br/>
@@ -40,7 +47,8 @@ export function Header({value, ...props}){
                 value={props.search}
                 onChange={handleInputChange}
             />
-            
+            **/
+            }
             {/** 
              *
              

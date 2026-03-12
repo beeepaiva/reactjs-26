@@ -2,7 +2,11 @@ import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 // Se o export for no começo
-import {Header} from './componentes/Header.js'
+import { Header } from './componentes/Header.js';
+import {Footer} from './componentes/Footer.js';
+import { CalculadoraIMC } from './componentes/CalculadoraIMC.js';
+import { Calculadora } from './componentes/Calculadora.js';
+import { ClimaTempo } from './componentes/ClimaTempo.js';
 // Se for no final
 //import Header from './componentes/Header';
 import Button from './componentes/Button.js'
@@ -43,13 +47,43 @@ function App() {
     setSearch(valor)
   }
 
+
+  const [exercicio, setExercicio] = useState('')
+  const [temaEscuro, setTemaEscuro] = useState(false)
+
+
+  function mudarTema(){
+    setTemaEscuro(!temaEscuro);
+  }
+  function voltarInicio(){
+    setExercicio(null)
+  }
+
+
   return (
     <div className="App">
+      {/* Exercicios de Aula 11-03 */}
+      <div className={temaEscuro ? 'App' : 'AppLight'}>
+        <Header class={temaEscuro ? 'headerDark' : 'headerLight'} tema={mudarTema} action={voltarInicio}/>
+
+        <div className="buttonHall">
+          <button onClick={()=>setExercicio('1')}>Exercício 1</button>
+          <button onClick={()=>setExercicio('2')}>Exercício 2</button>
+          <button onClick={()=>setExercicio('3')}>Exercício 3</button>
+        </div>
+        <div className='exercicio'>
+          {exercicio==='1' ? <Calculadora/> : <></>}
+          {exercicio==='2' ? <CalculadoraIMC/> : <></>}
+          {exercicio==='3' ? <ClimaTempo/> : <></>}
+        </div>
+        <Footer class={temaEscuro ? 'footerDark' : 'footerLight'}/>
+      </div>
+      
+      {
+      /*
       <Header value={getValue} searched={search}/>
       <Alunos alunos={listAlunos} search={search} />
 
-      {
-      /*
       <br/>
       <Bola />
       
